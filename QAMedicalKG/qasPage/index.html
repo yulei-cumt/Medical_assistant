@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			html {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				background-color: #ccc;
+				background-image: url(media/bg1.png), url(media/bg2.png);
+				background-position: bottom;
+				background-repeat: repeat-x;
+				/* background-size: contain; */
+
+				animation: mountain 100s linear infinite;
+
+			}
+
+			@keyframes mountain {
+				from {
+					background-position: 0 100%;
+				}
+
+				to {
+					background-position: 100% 100%;
+				}
+			}
+
+			.bearbox {
+				position: relative;
+				/* margin-bottom: 30px; */
+				height: 100px;
+			}
+
+			.bear {
+				position: absolute;
+				width: 200px;
+				height: 100px;
+				background: url(media/bear.png) no-repeat;
+				/* 我们元素可以添加多个动画， 用逗号分隔 */
+				animation: bear .6s steps(8) infinite, move 4s forwards linear;
+			}
+
+			@keyframes bear {
+				0% {
+					background-position: 0 0;
+				}
+
+				100% {
+					background-position: -1600px 0;
+				}
+			}
+
+			@keyframes move {
+				0% {
+					left: 0;
+				}
+
+				100% {
+					left: 50%;
+					/* margin-left: -100px; */
+					transform: translateX(-50%);
+				}
+			}
+			
+			.title{
+				/* background-color: #FFFFFF; */
+				margin-top: 20px;
+				text-align: center;
+				color: rgba(102, 108, 124, 0.3);
+				font-size: 12px;
+				/* font-family:"Microsoft YaHei"; */
+			}
+
+			.chat {
+				box-sizing: border-box;
+				margin: 40px auto;
+				padding: 20px 30px;
+				height: 500px;
+				width: 800px;
+				background-color: rgba(255, 255, 255, 0.6);
+				border: rgba(255, 255, 255, 0) solid;
+				border-radius: 20px;
+			}
+
+			.chatbox {
+				overflow-x: hidden;
+				overflow-y: auto;
+				/* margin: 20px 30px; */
+				padding: 20px;
+				box-sizing: border-box;
+				height: 400px;
+				border: #CCCCCC solid;
+				border-radius: 20px;
+			}
+
+			/* 滚动条整体部分 */
+			.chatbox::-webkit-scrollbar {
+				/* margin: 5px; */
+				width: 5px;
+				/* height: 10px; */
+				/* background-color: #e1dddd; */
+			}
+
+			/* scroll轨道背景 */
+			.chatbox::-webkit-scrollbar-track {
+				margin: 10px;
+				/* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+				border-radius: 10px;
+				/* background-color: black; */
+			}
+
+			/* 滚动条中能上下移动的小块 */
+			.chatbox::-webkit-scrollbar-thumb {
+				/* margin: 5px; */
+				border-radius: 10px;
+				/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  */
+				background-color: #b5b1b1;
+			}
+
+			.answer {
+				text-align: right;
+				margin-bottom: 20px;
+				color: #3b3e4c;
+			}
+			.ask {
+				text-align: left;
+				margin-bottom: 20px;
+				color: #3b3e4c;
+			}
+			
+			.chatbox .a-tBox{
+				display: inline-block;
+				/* position: relative; */
+			}
+			/* 文本样式 */
+			.chatbox .text {
+				/* vertical-align: middle;
+				display: table-cell; */
+				display: inline-block;
+				padding: 8px 15px;
+				max-width: 300px;
+				border-radius: 10px;
+				background-color: white;
+			}
+			
+			/* 头像样式 */
+			.chatbox .avatar {
+				/* vertical-align: middle;
+				display: table-cell; */
+				display: inline-block;
+				position: relative;
+				top: 12px;
+				height: 45px;
+				width: 45px;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.chatbox .avatar img{
+				height: 45px;
+				width: 45px;
+				border-radius: 50%;
+			}
+			
+			.textbox{
+				margin-top: 20px;
+			}
+			.textbox .inputText{
+				padding:0 10px;
+				margin: 0;
+				height: 30px;
+				width: 645px;
+				border-radius: 10px;
+				border: #CCCCCC solid;
+				outline:none;
+			}
+			.textbox .inputText:hover{
+				border-radius: 10px;
+				border: #3b3e4c solid;
+			}
+			.textbox .button{
+				padding: 0;
+				margin: 0;
+				height: 30px;
+				width: 60px;
+				border-radius: 10px;
+				border: #CCCCCC solid;
+				background-color: #3b3e4c;
+				color: #c3d3db;
+				outline:none;
+			}
+			.textbox .button:active{
+				border-radius: 10px;
+				border: #3b3e4c solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<div class="chat">
+				<div class="chatbox">
+					<div v-for="(item,index) in msg" :class="[item.key===0? 'ask':'answer']" :key="index">
+						<!-- 回答 -->
+						<div v-if="item.key===0" class="a-tBox">
+							<div class="avatar"><img src="media/robot.png"></div>
+							<div class="text" style="margin-left: 10px;">{{item.text}}</div>
+						</div>
+						<!-- 询问 -->
+						<div v-else class="a-tBox">
+							<div class="text" style="text-align: left;margin-right: 10px;">{{item.text}}</div>
+							<div class="avatar"><img src="media/pic.jpg"></div>
+						</div>
+					</div>
+				</div>
+				<div class="textbox">
+					<input type="text" placeholder="请输入问题..."/ class="inputText" v-model="textInput" @keyup.enter="send">
+					<input type="button" value="发送" class="button" @click="send" />
+				</div>
+			</div>
+			<div class="bearbox">
+				<div class="bear"></div>
+			</div>
+			<div class="title">
+				智能医疗问答系统 @于磊 叶子萌 张鑫
+			</div>
+		</div>
+
+		<script src="vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					textInput: '百日咳不能吃什么',
+					msg: [{
+						key: 0,
+						text: '欢迎使用医疗小冰~'
+					}, ],
+
+				},
+				methods: {
+					send() {
+						if (this.textInput.length > 0) {
+							var tem = {};
+							tem.key = 1;
+							tem.text = this.textInput;
+							this.textInput = '';
+							console.log(tem);
+							this.msg.push(tem);
+
+							var that = this;
+							axios.get('http://127.0.0.1:5000/ask', {
+									params: {
+										the_question: tem.text
+									}
+								})
+								.then(function(response) {
+									console.log(response);
+									tem = {};
+									tem.key = 0;
+									tem.text = response.data.answer;
+									// console.log(tem);
+									that.msg.push(tem);
+								})
+								.catch(function(error) {
+									console.log(error);
+								});
+						} else {
+							alert('输入问题不可为空！');
+						}
+					}
+
+				},
+				updated() {
+					//视窗固定在底部
+					this.$nextTick(() => {
+						var div = document.getElementsByClassName('chatbox')[0];
+						div.scrollTop = div.scrollHeight;
+					})
+				}
+
+			})
+		</script>
+	</body>
+</html>
