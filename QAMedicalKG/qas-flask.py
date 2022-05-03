@@ -14,7 +14,6 @@ from answer_search import *
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-
 '''问答类'''
 class ChatBotGraph:
     def __init__(self):

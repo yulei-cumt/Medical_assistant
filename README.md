@@ -31,7 +31,7 @@ pip install pyahocorasick -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ![image-20211213220945013](./img/2.png)
 
-+ data: 存放知识图谱数据集，medical2是部门数据集，medical是完整数据集，完整数据集导入数据库耗时大概几小时，如果只是演示效果可以只是用medical2，但是要注意之后测试时，提问的疾病实体在数据库中存在。
++ data: 存放知识图谱数据集，medical2是部分数据集，medical是完整数据集，完整数据集导入数据库耗时大概几小时，如果只是演示效果可以只是用medical2，但是要注意之后测试时，提问的疾病实体在数据库中存在。
 
 + dict: 存放各实体导出的txt文件和否定词文件。
 
