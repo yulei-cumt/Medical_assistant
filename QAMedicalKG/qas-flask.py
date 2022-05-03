@@ -1,3 +1,4 @@
+# 后端代码，用flask编写，成功运行后回到文件点开html文件即可进行问答系统的问答
 from flask import Flask
 from flask import request
 from flask_cors import *

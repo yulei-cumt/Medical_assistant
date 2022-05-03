@@ -1,3 +1,4 @@
+# 问句分类代码
 import os
 import ahocorasick
 from callModel import callModelCNN

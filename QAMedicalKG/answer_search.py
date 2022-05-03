@@ -1,3 +1,4 @@
+# 数据库查询模块
 # coding: UTF-8
 import numpy as np
 import torch
@@ -49,7 +50,7 @@ def train(config, model, train_iter, dev_iter, test_iter,writer):
             loss.backward()
             optimizer.step()
             if total_batch % 100 == 0:
-                # 每多少轮输出在训练集和验证集上的效果
+                # 输出在训练集和验证集上的效果，每隔100轮输出一次
                 true = labels.data.cpu()
                 predic = torch.max(outputs.data, 1)[1].cpu()
                 train_acc = metrics.accuracy_score(true, predic)

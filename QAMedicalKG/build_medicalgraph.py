@@ -1,3 +1,4 @@
+# 构建知识图谱，写数据库
 import os
 import json
 from py2neo import Graph, Node

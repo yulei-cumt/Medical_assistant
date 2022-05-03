@@ -1,3 +1,4 @@
+# 测试neo4j数据库连接
 from py2neo import Graph
 graph = Graph("http://localhost:7474", auth=("neo4j", "UCAS251340"))
 try:

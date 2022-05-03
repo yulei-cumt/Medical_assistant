@@ -1,3 +1,4 @@
+# 问答测试入口，仅开发中使用，正式运行使用前端界面提问
 from question_classifier import *
 from question_parser import *
 from answer_search import *

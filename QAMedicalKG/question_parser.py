@@ -1,3 +1,4 @@
+# 问句解析，将问句抽象出具体的查询语句
 class QuestionPaser:
 
     '''构建实体节点'''
@@ -129,7 +130,7 @@ class QuestionPaser:
         elif question_type == 'symptom_disease':
             sql = ["MATCH (m:Disease)-[r:has_symptom]->(n:Symptom) where n.name = '{0}' return m.name, r.name, n.name".format(i) for i in entities]
 
-        # 查询疾病的并发症
+        # 查询并发症
         elif question_type == 'disease_acompany':
             sql1 = ["MATCH (m:Disease)-[r:acompany_with]->(n:Disease) where m.name = '{0}' return m.name, r.name, n.name".format(i) for i in entities]
             sql2 = ["MATCH (m:Disease)-[r:acompany_with]->(n:Disease) where n.name = '{0}' return m.name, r.name, n.name".format(i) for i in entities]

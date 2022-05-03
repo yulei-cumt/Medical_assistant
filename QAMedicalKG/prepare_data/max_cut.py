@@ -1,3 +1,4 @@
+#分词
 class CutWords:
     def __init__(self):
         dict_path = './disease.txt'
