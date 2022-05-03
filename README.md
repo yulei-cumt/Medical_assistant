@@ -1,5 +1,9 @@
 # 项目运行环境
 
+## 项目代码地址
+
+https://github.com/yulei-cumt/Medical_assistant
+
 ## Neo4j安装
 
 + [Java SE Development Kit](https://www.oracle.com/java/technologies/javase-downloads.html)
