@@ -19,7 +19,7 @@ pip install pyahocorasick -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 这个需要VS环境，如果命令行安装提示没有VS环境可以进入
 
-![image-20211213221000462](./img/1.png)
+![image-20211213221000462](./img/readme-1.png)
 
 用VS命令行执行pip命令
 
@@ -29,7 +29,7 @@ pip install pyahocorasick -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # 目录结构介绍
 
-![image-20211213220945013](./img/2.png)
+![image-20211213220945013](./img/readme-2.png)
 
 + data: 存放知识图谱数据集，medical2是部分数据集，medical是完整数据集，完整数据集导入数据库耗时大概几小时，如果只是演示效果可以只是用medical2，但是要注意之后测试时，提问的疾病实体在数据库中存在。
 
@@ -63,13 +63,13 @@ pip install pyahocorasick -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 2. 运行qas-flask文件，开启后台。运行时配置--model TextCNN，步骤如下图：
 
-![image-20211213220836978](./img/3.png)
+![image-20211213220836978](./img/readme-3.png)
 
-![image-20211213220846568](./img/4.png)
+![image-20211213220846568](./img/readme-4.png)
 
 在网络环境正常的情况下运行qasPage中的index.html文件，输入问题即可测试。
 
 正确运行结果为：
 
-![image-20211213220755295](./img/5.png)
+![image-20211213220755295](./img/readme-5.png)
 
